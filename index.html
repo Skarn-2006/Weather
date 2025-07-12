@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Weather Forecast - Real-time Weather Updates</title>
+    <meta name="description" content="Get real-time weather forecasts for Indian cities with beautiful animations and detailed weather information.">
+    <meta name="keywords" content="India weather, weather forecast, Indian cities weather, Mumbai weather, Delhi weather">
+    <meta name="author" content="India Weather Forecast">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="India Weather">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzFfMSkiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxMiIgcj0iNCIgZmlsbD0iI0ZGRDcwMCIvPgo8cGF0aCBkPSJNMTAgMTZDOC44OTU0MyAxNiA4IDE2Ljg5NTQgOCAxOEM4IDE5LjEwNDYgOC44OTU0MyAyMCAxMCAyMEgxNkMxNi4yNjUyIDIwIDE2LjUyMTcgMTkuOTc4MyAxNi43NjUyIDE5LjkzOTFDMTguNzM5MSAxOS42NTIyIDIwIDE3Ljk1NjUgMjAgMTZDMjAgMTMuNzkwOSAxOC4yMDkxIDEyIDE2IDEySDE0QzEzLjQ0NzcgMTIgMTMgMTEuNTUyMyAxMyAxMUMxMyAxMC40NDc3IDEzLjQ0NzcgMTAgMTQgMTBIMTZDMTYuNTUyMyAxMCAxNyAxMC40NDc3IDE3IDExQzE3IDExLjU1MjMgMTYuNTUyMyAxMiAxNiAxMkgxNkMxOC4yMDkxIDEyIDIwIDEzLjc5MDkgMjAgMTZDMjAgMTMuNzkwOSAxOC4yMDkxIDEyLjUgMTYgMTIuNUgxMEM2LjY4NjI5IDEyLjUgNCAyNS4zMTM3IDQgMjhDNCAzMC42ODYzIDYuNjg2MjkgMzMuNSAxMCAzMy41SDIyQzI1LjMxMzcgMzMuNSAyOCAzMC42ODYzIDI4IDI4QzI4IDI1LjMxMzcgMjUuMzEzNyAyMi41IDIyIDIyLjVIMTZDMTguMjA5MSAyMi41IDIwIDI0LjI5MDkgMjAgMjZDMjAgMjcuNzA5MSAxOC4yMDkxIDI5LjUgMTYgMjkuNUgxMEM4Ljg5NTQzIDI5LjUgOCAyOC42MDQ2IDggMjcuNUM4IDI2LjM5NTQgOC44OTU0MyAyNS41IDEwIDI1LjVaIiBmaWxsPSIjRkZGRkZGIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIzMiIgeTI9IjMyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM2NjdFRUEiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzY0QkEyIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg=="
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="rain-container">
+            <div class="rain"></div>
+            <div class="rain"></div>
+            <div class="rain"></div>
+            <div class="rain"></div>
+            <div class="rain"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <h1>India Weather</h1>
+            </div>
+            <nav class="nav">
+                <a href="#current" class="nav-link active">Current</a>
+                <a href="#forecast" class="nav-link">Forecast</a>
+                <a href="#cities" class="nav-link">Cities</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="cityInput" placeholder="Search for Indian cities..." autocomplete="off">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="suggestions" id="suggestions"></div>
+                </div>
+            </section>
+
+            <!-- Current Weather Section -->
+            <section id="current" class="current-weather">
+                <div class="weather-card main-card">
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Loading weather data...</p>
+                    </div>
+                    
+                    <div class="weather-content" id="weatherContent" style="display: none;">
+                        <div class="weather-header">
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h2 id="cityName">Mumbai</h2>
+                                <p id="currentDate"></p>
+                            </div>
+                            <div class="weather-icon">
+                                <img id="weatherIcon" src="" alt="Weather Icon">
+                            </div>
+                        </div>
+                        
+                        <div class="temperature">
+                            <span id="currentTemp">28°</span>
+                            <div class="temp-toggle">
+                                <button id="celsiusBtn" class="temp-btn active">°C</button>
+                                <button id="fahrenheitBtn" class="temp-btn">°F</button>
+                            </div>
+                        </div>
+                        
+                        <div class="weather-description">
+                            <p id="weatherDesc">Partly Cloudy</p>
+                            <p id="feelsLike">Feels like 32°</p>
+                        </div>
+                        
+                        <div class="weather-details">
+                            <div class="detail-item">
+                                <i class="fas fa-eye"></i>
+                                <span>Visibility</span>
+                                <span id="visibility">10 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-tint"></i>
+                                <span>Humidity</span>
+                                <span id="humidity">65%</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-wind"></i>
+                                <span>Wind</span>
+                                <span id="windSpeed">15 km/h</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-thermometer-half"></i>
+                                <span>Pressure</span>
+                                <span id="pressure">1013 hPa</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-sun"></i>
+                                <span>UV Index</span>
+                                <span id="uvIndex">5</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>Clouds</span>
+                                <span id="cloudCover">40%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast Section -->
+            <section id="forecast" class="forecast-section">
+                <h3 class="section-title">5-Day Forecast</h3>
+                <div class="forecast-container" id="forecastContainer">
+                    <!-- Forecast cards will be dynamically generated -->
+                </div>
+            </section>
+
+            <!-- Popular Cities Section -->
+            <section id="cities" class="cities-section">
+                <h3 class="section-title">Popular Indian Cities</h3>
+                <div class="cities-grid">
+                    <div class="city-card" data-city="Mumbai">
+                        <div class="city-info">
+                            <h4>Mumbai</h4>
+                            <p>Maharashtra</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Delhi">
+                        <div class="city-info">
+                            <h4>Delhi</h4>
+                            <p>National Capital</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Bangalore">
+                        <div class="city-info">
+                            <h4>Bangalore</h4>
+                            <p>Karnataka</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Chennai">
+                        <div class="city-info">
+                            <h4>Chennai</h4>
+                            <p>Tamil Nadu</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Kolkata">
+                        <div class="city-info">
+                            <h4>Kolkata</h4>
+                            <p>West Bengal</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Hyderabad">
+                        <div class="city-info">
+                            <h4>Hyderabad</h4>
+                            <p>Telangana</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Pune">
+                        <div class="city-info">
+                            <h4>Pune</h4>
+                            <p>Maharashtra</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Ahmedabad">
+                        <div class="city-info">
+                            <h4>Ahmedabad</h4>
+                            <p>Gujarat</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Jaipur">
+                        <div class="city-info">
+                            <h4>Jaipur</h4>
+                            <p>Rajasthan</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Surat">
+                        <div class="city-info">
+                            <h4>Surat</h4>
+                            <p>Gujarat</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Lucknow">
+                        <div class="city-info">
+                            <h4>Lucknow</h4>
+                            <p>Uttar Pradesh</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="city-card" data-city="Kanpur">
+                        <div class="city-info">
+                            <h4>Kanpur</h4>
+                            <p>Uttar Pradesh</p>
+                        </div>
+                        <div class="city-weather">
+                            <span class="city-temp">--°</span>
+                            <i class="city-icon fas fa-cloud"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 India Weather Forecast. Real-time weather data powered by OpenWeatherMap.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
